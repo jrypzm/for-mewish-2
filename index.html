@@ -35,10 +35,10 @@ main{position:relative;z-index:1}
 .hero h1 em{color:var(--rose);font-weight:500}
 .hero p{max-width:550px;color:var(--muted);font-size:clamp(1rem,2.5vw,1.18rem);margin:0 auto 28px}
 .hero-seal{display:grid;place-items:center;width:76px;height:76px;margin:0 auto 26px;border:1px solid #e8c98a88;border-radius:50%;color:var(--gold);font-size:2rem;box-shadow:0 0 55px #e8c98a16,inset 0 0 24px #e8c98a0d}
-.primary,.secondary{border:0;border-radius:999px;padding:14px 23px;font-weight:700;transition:transform .2s,box-shadow .2s,background .2s;min-height:48px}
+.primary,.secondary{border:0;border-radius:999px;padding:14px 23px;font-weight:700;transition:transform .2s,box-shadow .2s,background .2s,font-size .2s,padding .2s;min-height:48px}
 .primary{color:#fffaf3;background:#75654f;box-shadow:0 5px 0 #4f4638}
 .primary:hover{transform:translateY(-2px);box-shadow:0 7px 0 #4f4638}
-.secondary{color:var(--cream);background:#fff0;border:1px solid var(--line)}
+.secondary{color:var(--cream);background:transparent;border:1px solid var(--line)}
 .secondary:hover{background:#2926200a}
 .scroll-hint{display:block;color:#82796d;font-size:.78rem;margin-top:35px;letter-spacing:.12em;text-transform:uppercase}
 .section-wrap{max-width:1040px;margin:0 auto;padding:28px clamp(18px,4vw,42px) 70px}
@@ -202,7 +202,11 @@ Happy birthday, Mommy. You matter to me a lot. Please do not let this website in
   </div>
 </section>
 </main>
-<footer class="footer">Made with questionable coding decisions and one (1) birthday girl in mind.</footer>
+<footer class="footer">
+  Made with questionable coding decisions and one (1) birthday girl in mind.
+  <br>
+  <button class="secondary" id="downloadPage" type="button" style="margin-top:12px;font-size:0.8rem;padding:8px 16px;">⬇ Download this page</button>
+</footer>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
 (() => {
@@ -226,10 +230,30 @@ document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',e=>
 $('motionToggle').addEventListener('click',()=>{calm=!calm;$('motionToggle').textContent=calm?'Motion: reduced':'Motion: normal';$('motionToggle').setAttribute('aria-pressed',String(calm));toast(calm?'Motion effects reduced':'Motion effects restored')});
 // Decorative, low-count sparkle layer
 if(!calm){const holder=$('sparkles');for(let i=0;i<18;i++){const s=document.createElement('span');s.className='spark';s.textContent=i%3===0?'✦':'·';s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';s.style.setProperty('--dur',(4+Math.random()*5)+'s');s.style.setProperty('--delay',(-Math.random()*7)+'s');s.style.fontSize=(8+Math.random()*15)+'px';holder.appendChild(s)}}
-// Chapter 1
-let noCount=0;const noReplies=['A bold answer. The committee requests a recount. 😌','Interesting… the button seems to disagree.','That answer has been gently rejected by the boyfriend council.','One more chance to choose correctly, birthday queen.'];
-$('noBtn').addEventListener('click',()=>{noCount++;$('s1').textContent=noReplies[(noCount-1)%noReplies.length];const b=$('noBtn');b.style.transform='translate('+(Math.random()*36-18)+'px,'+(Math.random()*12-6)+'px)';if(noCount>=3){b.textContent='Okay, okay 😭';$('q1').textContent='The button has accepted its fate.'}});
-$('yesBtn').addEventListener('click',()=>{$('q1').textContent='Correct. The committee thanks you for your cooperation.';$('s1').textContent='Review submitted. Boyfriend ego increased by 14%.';$('yesBtn').textContent='Correct answer ✓';$('noBtn').classList.add('hidden');markDone(1);celebrate(90)});
+// Chapter 1 – "No" disappears, "Yes" becomes the only, larger option
+const yesBtn = $('yesBtn');
+const noBtn = $('noBtn');
+const q1 = $('q1');
+const s1 = $('s1');
+
+noBtn.addEventListener('click', () => {
+  noBtn.classList.add('hidden');
+  yesBtn.style.fontSize = '1.4rem';
+  yesBtn.style.padding = '18px 36px';
+  yesBtn.style.minHeight = '64px';
+  q1.textContent = 'The “no” button has been eliminated. Only one option remains.';
+  s1.textContent = 'The committee has spoken. There is only one answer.';
+});
+
+yesBtn.addEventListener('click', () => {
+  q1.textContent = 'Correct. The committee thanks you for your cooperation.';
+  s1.textContent = 'Review submitted. Boyfriend ego increased by 14%.';
+  yesBtn.textContent = 'Correct answer ✓';
+  noBtn.classList.add('hidden');
+  markDone(1);
+  celebrate(90);
+});
+
 // Chapter 2 heart-catching game
 const stage=$('heartStage'),hc=$('heartCanvas'),ctx=hc.getContext('2d');let gw=0,gh=0,game={on:false,items:[],x:0,score:0,lives:3,last:0,spawn:0,raf:0};
 function resizeGame(){const r=stage.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);gw=r.width;gh=r.height;hc.width=Math.round(gw*dpr);hc.height=Math.round(gh*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);game.x=Math.min(gw-24,Math.max(24,game.x||gw/2));drawGame()}
@@ -248,14 +272,14 @@ const holes=$('holes');let wh={on:false,score:0,time:15,current:-1,timer:null,in
 const holeButtons=[];for(let i=0;i<9;i++){const b=document.createElement('button');b.className='hole';b.type='button';b.textContent='·';b.setAttribute('aria-label','Empty game spot');b.addEventListener('click',()=>{if(!wh.on||wh.current!==i)return;const good=b.dataset.good==='1';wh.score=Math.max(0,wh.score+(good?-2:1));$('whackScore').textContent=wh.score;b.textContent='✦';b.classList.remove('up');wh.current=-1;$('s3').textContent=good?'Mercy! That one was your boyfriend. 😭':'Bonk! Drama reduced by one. ✨'});holes.appendChild(b);holeButtons.push(b)}
 function popHole(){if(!wh.on)return;holeButtons.forEach(b=>{b.classList.remove('up');b.textContent='·';b.dataset.good='0';b.setAttribute('aria-label','Empty game spot')});const i=Math.floor(Math.random()*9),good=Math.random()<.22,b=holeButtons[i];wh.current=i;b.dataset.good=good?'1':'0';b.textContent=good?'🥰':'😒';b.classList.add('up');b.setAttribute('aria-label',good?'Boyfriend — do not bonk':'Jealous face — tap to bonk');wh.timer=setTimeout(popHole,650)}
 $('whackStart').addEventListener('click',()=>{clearTimeout(wh.timer);clearInterval(wh.interval);wh={on:true,score:0,time:15,current:-1,timer:null,interval:null};$('whackScore').textContent='0';$('whackTime').textContent='15';$('whackStart').textContent='Restart round';$('s3').textContent='Go go go!';popHole();wh.interval=setInterval(()=>{wh.time--;$('whackTime').textContent=wh.time;if(wh.time<=0){wh.on=false;clearTimeout(wh.timer);clearInterval(wh.interval);holeButtons.forEach(b=>{b.classList.remove('up');b.textContent='·';b.dataset.good='0';b.setAttribute('aria-label','Empty game spot')});$('whackStart').textContent='Play again';$('s3').textContent=wh.score>=8?'Score '+wh.score+'! You bonked the drama. Local authorities are investigating.':'Score '+wh.score+'. The drama put up a fight — rematch?';if(wh.score>=8){markDone(3);celebrate(75)}}},1000)});
-// Chapter 4 quiz, answer scoring is tied to the actual selected option.
+// Chapter 4 quiz – direct speech to her, addressing her as Mommy, wrong answers explained
 const questions=[
- {q:'Who has the prettiest eyes?',answers:['Mommy, obviously','Her boyfriend'],correct:0,why:'Those eyes could make the moon jealous. 🌙'},
- {q:'Who misses the other more?',answers:['Mommy','Her boyfriend'],correct:1,why:'He misses you in all the little quiet moments, too. 🥹'},
- {q:'Who deserves to be spoiled today?',answers:['Mommy','Also Mommy'],correct:0,why:'A trick question. Both answers are Mommy. 👑'},
- {q:'Where is his favorite place?',answers:['Anywhere with Mommy','On the moon'],correct:0,why:'Home is a person, and for him, it is you. ♡'}
+ {q:'Who has the prettiest eyes?',answers:['Mommy, obviously','Me'],correct:0,why:'Correct. Mommy has the prettiest eyes. Not even close.',wrongWhy:'Wrong. It is Mommy. Have you seen her eyes? Exactly.'},
+ {q:'Who misses the other more?',answers:['Mommy','Me'],correct:1,why:'Correct. I miss you more, Mommy. But you have pretty eyes, so you win anyway.',wrongWhy:'Wrong. I miss you more, Mommy. But you still win. It is rigged.'},
+ {q:'Who deserves to be spoiled today?',answers:['Mommy','Also Mommy'],correct:0,why:'Correct. It is Mommy. Obviously.',wrongWhy:'Wrong. But also correct. It is Mommy either way. The quiz is rigged.'},
+ {q:'Where is my favorite place?',answers:['Anywhere with Mommy','The moon'],correct:0,why:'Correct. Anywhere with Mommy. The moon was a decoy.',wrongWhy:'Wrong. It is anywhere with Mommy. The moon is cold and has no Mommy.'}
 ];let qi=0,qscore=0,answered=false;
-function renderQuiz(){answered=false;$('quizNum').textContent=Math.min(qi+1,questions.length)+' / '+questions.length;$('quizScore').textContent=qscore;$('quizQuestion').textContent=qi<questions.length?questions[qi].q:'The results are in…';$('quizOptions').innerHTML='';$('quizNext').classList.add('hidden');if(qi>=questions.length){$('quizQuestion').textContent='Final result: birthday queen, undefeated. 👑';$('s4').textContent='You scored '+qscore+' out of '+questions.length+'. The most important fact: I made you take a quiz on your birthday. Incredible use of technology.';$('quizAgain').classList.remove('hidden');markDone(4);celebrate(100);return}$('quizAgain').classList.add('hidden');questions[qi].answers.forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.className='quiz-option';b.textContent=a;b.addEventListener('click',()=>{if(answered)return;answered=true;if(i===questions[qi].correct)qscore++;$('quizScore').textContent=qscore;[...$('quizOptions').children].forEach(x=>x.disabled=true);$('s4').textContent=questions[qi].why;$('quizNext').classList.remove('hidden');if(i===questions[qi].correct)celebrate(25)});$('quizOptions').appendChild(b)});$('s4').textContent='Pick an answer. The scoring department is one guy with a laptop.'}
+function renderQuiz(){answered=false;$('quizNum').textContent=Math.min(qi+1,questions.length)+' / '+questions.length;$('quizScore').textContent=qscore;$('quizQuestion').textContent=qi<questions.length?questions[qi].q:'The results are in…';$('quizOptions').innerHTML='';$('quizNext').classList.add('hidden');if(qi>=questions.length){$('quizQuestion').textContent='Final result: birthday queen, undefeated. 👑';$('s4').textContent='You scored '+qscore+' out of '+questions.length+'. The most important fact: I made you take a quiz on your birthday. Incredible use of technology.';$('quizAgain').classList.remove('hidden');markDone(4);celebrate(100);return}$('quizAgain').classList.add('hidden');questions[qi].answers.forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.className='quiz-option';b.textContent=a;b.addEventListener('click',()=>{if(answered)return;answered=true;const isCorrect=(i===questions[qi].correct);if(isCorrect)qscore++;$('quizScore').textContent=qscore;[...$('quizOptions').children].forEach(x=>x.disabled=true);$('s4').textContent=isCorrect?questions[qi].why:questions[qi].wrongWhy;$('quizNext').classList.remove('hidden');if(isCorrect)celebrate(25)});$('quizOptions').appendChild(b)});$('s4').textContent='Pick an answer. The scoring department is one guy with a laptop.'}
 $('quizNext').addEventListener('click',()=>{if(!answered)return;qi++;renderQuiz()});$('quizAgain').addEventListener('click',()=>{qi=0;qscore=0;renderQuiz()});renderQuiz();
 // Chapter 5 rating, hugs, and truths
 const ratings=['I admire your confidence. 😭','The panel would like to speak to you.','We are requesting a recount.','A little harsh, birthday queen.','I will accept this with dignity.','Room for improvement. I respect it.','Okay, we are getting somewhere.','The boyfriend is blushing.','That is a very fair score.','So close to perfection…','The scale has officially broken. ∞/10'];function updateRating(){const v=+$('rating').value;$('ratingNumber').textContent=v===10?'∞/10':v+'/10';$('ratingCaption').textContent=ratings[v]}$('rating').addEventListener('input',updateRating);updateRating();
@@ -263,6 +287,20 @@ let hugs=0,truth=0;const truths=['I miss you even when we have only just said go
 $('truthBtn').addEventListener('click',()=>{truth=(truth+1)%truths.length;$('s5').textContent=truths[truth];$('truthBtn').textContent='One more truth ♡'});
 $('finalParty').addEventListener('click',()=>{celebrate(180);$('sLetter').textContent='If the world gets loud, come back to this little corner. It was made just for you. ♡';toast('Confetti deployed. Please clean up after the website.')});
 $('copyLetter').addEventListener('click',async()=>{const text=$('loveLetter').textContent.trim()+'\n\n'+$('signature').textContent;try{await navigator.clipboard.writeText(text);$('sLetter').textContent='Copied. This website has finally produced something practical.'}catch(e){$('sLetter').textContent='Select and copy the letter above to keep it close. ♡'}});
+// Download page button
+$('downloadPage').addEventListener('click',()=>{
+  const html = document.documentElement.outerHTML;
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'birthday_mommy.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast('Download started. Save it somewhere safe. ♡');
+});
 // Clean up active game loops when the page is hidden.
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&game.on){game.on=false;cancelAnimationFrame(game.raf);$('heartStart').textContent='Resume with a fresh round'}})
 })();
