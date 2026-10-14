@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#210f22">
+<meta name="description" content="A little birthday universe made with love, just for you.">
+<title>For My Favorite Person ✦ Happy Birthday, Mommy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--night:#f5f1e8;--night2:#eae3d7;--plum:#d9cbb8;--rose:#bc755f;--pink:#f2d7c9;--gold:#75654f;--cream:#292620;--muted:#706b62;--glass:rgba(41,38,32,.045);--line:rgba(41,38,32,.14);--shadow:0 16px 44px #3b30200d;--radius:18px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#d9cbb855,transparent 38rem),radial-gradient(ellipse at 90% 35%,#e8d8c555,transparent 36rem),var(--night);color:var(--cream);font-family:"DM Sans",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+a{color:inherit}
+::selection{background:var(--rose);color:var(--night)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+#sparkles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.spark{position:absolute;color:var(--gold);opacity:0;animation:twinkle var(--dur,5s) ease-in-out infinite;animation-delay:var(--delay,0s)}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.6) rotate(0)}50%{opacity:.7;transform:scale(1) rotate(25deg)}}
+.topbar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1120px;margin:auto;padding:24px clamp(20px,5vw,54px)}
+.brand{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.music-toggle{border:1px solid var(--line);border-radius:999px;background:#2926200a;padding:10px 15px;color:var(--cream);font-size:.82rem;transition:background .2s}
+.music-toggle:hover{background:#29262012}
+main{position:relative;z-index:1}
+.hero{min-height:75vh;display:grid;place-items:center;text-align:center;padding:45px 22px 85px;position:relative;isolation:isolate}
+.hero:before{content:"";position:absolute;width:min(75vw,660px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#c76b8b24,transparent 68%);z-index:-1}
+.eyebrow{color:var(--gold);font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700}
+.hero h1{font:500 clamp(3.3rem,10vw,7.6rem)/.98 "Playfair Display",Georgia,serif;letter-spacing:-.055em;max-width:980px;margin:24px auto}
+.hero h1 em{color:var(--rose);font-weight:500}
+.hero p{max-width:550px;color:var(--muted);font-size:clamp(1rem,2.5vw,1.18rem);margin:0 auto 28px}
+.hero-seal{display:grid;place-items:center;width:76px;height:76px;margin:0 auto 26px;border:1px solid #e8c98a88;border-radius:50%;color:var(--gold);font-size:2rem;box-shadow:0 0 55px #e8c98a16,inset 0 0 24px #e8c98a0d}
+.primary,.secondary{border:0;border-radius:999px;padding:14px 23px;font-weight:700;transition:transform .2s,box-shadow .2s,background .2s;min-height:48px}
+.primary{color:#fffaf3;background:#75654f;box-shadow:0 5px 0 #4f4638}
+.primary:hover{transform:translateY(-2px);box-shadow:0 7px 0 #4f4638}
+.secondary{color:var(--cream);background:#fff0;border:1px solid var(--line)}
+.secondary:hover{background:#2926200a}
+.scroll-hint{display:block;color:#82796d;font-size:.78rem;margin-top:35px;letter-spacing:.12em;text-transform:uppercase}
+.section-wrap{max-width:1040px;margin:0 auto;padding:28px clamp(18px,4vw,42px) 70px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:24px}
+.section-head h2{font:500 clamp(2rem,5vw,3.25rem)/1.1 "Playfair Display",Georgia,serif;margin:8px 0 0;letter-spacing:-.035em}
+.section-head p{color:var(--muted);max-width:360px;margin:0;font-size:.92rem}
+.progress-shell{height:4px;background:#2926200a;border-radius:99px;overflow:hidden;margin:22px 0 8px}
+#progress{height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width .5s}
+.progress-caption{display:flex;justify-content:space-between;color:#82796d;font-size:.75rem}
+.level-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.level-card{display:block;text-decoration:none;position:relative;overflow:hidden;text-align:left;min-height:220px;padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:rgba(255,255,255,.42);box-shadow:0 12px 40px #10070e16;transition:transform .25s,border-color .25s,background .25s}
+.level-card:hover{transform:translateY(-4px);border-color:#75654f66;background:linear-gradient(145deg,#ffffff12,#ffffff05)}
+.level-card.done{border-color:#75654f88}
+.level-card .number{color:var(--gold);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+.level-card .emoji{position:absolute;right:22px;top:22px;font-size:2rem;filter:drop-shadow(0 8px 14px #0003)}
+.level-card h3{font:500 1.55rem/1.2 "Playfair Display",Georgia,serif;margin:25px 0 9px}
+.level-card p{color:var(--muted);font-size:.9rem;margin:0 0 18px;max-width:300px}
+.card-link{font-size:.8rem;color:#8b4c3c;font-weight:700}
+.game-panel{margin-top:18px;padding:clamp(22px,4vw,38px);border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.5);box-shadow:var(--shadow);scroll-margin-top:20px}
+.game-top{display:flex;align-items:start;justify-content:space-between;gap:16px;margin-bottom:18px}
+.kicker{color:var(--gold);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.game-panel h3{font:500 clamp(1.8rem,4vw,2.5rem)/1.15 "Playfair Display",Georgia,serif;margin:5px 0}
+.game-panel .sub{color:var(--muted);font-size:.93rem;margin:8px 0 22px}
+.game-icon{font-size:2rem}
+.action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.status{min-height:1.6em;color:var(--gold);font-weight:600;margin:12px 0 0}
+.question{font:500 clamp(1.3rem,3.5vw,1.9rem)/1.3 "Playfair Display",Georgia,serif;margin:20px 0}
+.answer-row{display:flex;gap:12px;flex-wrap:wrap}
+.answer-row button{flex:1;min-width:120px}
+.heart-stage{height:270px;position:relative;border:1px solid #f3a6b933;border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#d9cbb855,transparent 65%),#e9e2d6;touch-action:pan-y}
+#heartCanvas{display:block;width:100%;height:100%}
+.game-stat{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.88rem;margin:12px 0}
+.game-stat strong{color:var(--cream)}
+.holes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:460px;margin:20px auto}
+.hole{min-height:84px;border:1px solid #f3a6b933;border-radius:20px;background:#e8e0d3;color:var(--cream);font-size:2rem;display:grid;place-items:center;transition:background .15s,transform .15s}
+.hole:active{transform:scale(.96)}
+.hole.up{background:#d9cbb8;box-shadow:inset 0 0 25px #75654f18}
+.quiz-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.quiz-option{border:1px solid var(--line);background:#fff08;color:var(--cream);border-radius:16px;padding:14px;min-height:54px;text-align:left;transition:background .2s,border-color .2s}
+.quiz-option:hover{background:#2926200a;border-color:#75654f88}
+.range-wrap{max-width:520px}
+input[type=range]{width:100%;accent-color:var(--rose);margin:22px 0}
+.rating-number{font:500 4rem/1 "Playfair Display",Georgia,serif;color:var(--gold)}
+.rating-caption{color:var(--muted);min-height:2em}
+.hug-zone{min-height:110px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;font-size:1.8rem;padding:12px}
+.note-card{position:relative;overflow:hidden;text-align:center;padding:clamp(30px,6vw,65px);border-radius:32px;border:1px solid #e8c98a55;background:radial-gradient(ellipse at 50% 0%,#d9cbb855,transparent 60%),#ebe4d8;box-shadow:var(--shadow)}
+.note-card:before,.note-card:after{content:"✦";position:absolute;color:#75654f33;font-size:2rem}
+.note-card:before{top:24px;left:28px}.note-card:after{bottom:24px;right:28px}
+.note-card h2{font:500 clamp(2.4rem,7vw,4.7rem)/1.05 "Playfair Display",Georgia,serif;letter-spacing:-.04em;margin:15px 0 22px}
+.note-card h2 em{color:var(--rose)}
+.letter{max-width:650px;margin:0 auto;color:#49443b;font:500 clamp(1.04rem,2.5vw,1.25rem)/1.9 "Playfair Display",Georgia,serif;white-space:pre-line}
+.signature{font:italic 1.6rem "Playfair Display",Georgia,serif;color:var(--gold);margin-top:28px}
+.footer{text-align:center;color:#82796d;padding:36px 20px 50px;font-size:.8rem}
+#toast{position:fixed;z-index:80;left:50%;bottom:24px;transform:translate(-50%,20px);background:#292620;color:#f5f1e8;padding:12px 18px;border-radius:999px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:calc(100vw - 32px);text-align:center;font-weight:700}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
+.hidden{display:none!important}
+@media(max-width:650px){.topbar{padding-top:18px}.hero{min-height:72vh;padding-top:28px}.section-head{display:block}.section-head p{margin-top:12px}.level-grid{grid-template-columns:1fr}.level-card{min-height:190px}.game-top{gap:8px}.game-icon{font-size:1.5rem}.holes{gap:8px}.hole{min-height:76px}.quiz-options{grid-template-columns:1fr}.note-card{border-radius:24px}.section-wrap{padding-bottom:45px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div><div id="sparkles" aria-hidden="true"></div><canvas id="confetti" aria-hidden="true"></canvas>
+<header class="topbar"><div class="brand">a website. allegedly.</div><button class="music-toggle" id="motionToggle" type="button" aria-pressed="false">Motion: normal</button></header>
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="hero-seal" aria-hidden="true">♡</div>
+    <div class="eyebrow">the internet has peaked (probably)</div>
+    <h1>Happy Birthday,<br><em>you absolute menace.</em></h1>
+    <p>I made you a website instead of buying a normal card like a person with normal hobbies. Please enjoy the consequences.</p>
+    <button class="primary" id="begin" type="button">Enter the nonsense <span aria-hidden="true">↗</span></button>
+    <span class="scroll-hint">five activities · questionable engineering</span>
+  </div>
+</section>
+<section class="section-wrap" id="adventures">
+  <div class="section-head"><div><div class="eyebrow">the birthday dashboard</div><h2>Things I coded instead of sleeping.</h2></div><p>Six buttons. Five games. Absolutely no funding. Click whatever looks least suspicious.</p></div>
+  <div class="progress-shell" role="progressbar" aria-label="Birthday adventures completed" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div id="progress"></div></div>
+  <div class="progress-caption"><span id="progressText">Your story is just beginning</span><span id="progressCount">0 / 5</span></div>
+  <div class="level-grid">
+    <a class="level-card" href="#game1" data-go="game1"><span class="number">01 · deeply unserious</span><span class="emoji">🧑‍⚖️</span><h3>Boyfriend performance review</h3><p>HR has received one complaint. It is me, reviewing myself.</p><span class="card-link">Open case ↗</span></a>
+    <a class="level-card" href="#game2" data-go="game2"><span class="number">02 · hand-eye coordination</span><span class="emoji">🧺</span><h3>Catch the nonsense</h3><p>Catch hearts. Avoid clouds. This is somehow the game with the most lore.</p><span class="card-link">Start flailing ↗</span></a>
+    <a class="level-card" href="#game3" data-go="game3"><span class="number">03 · anger management</span><span class="emoji">😒</span><h3>Bonk the drama</h3><p>Tap the grumpy faces. Do not bonk the boyfriend. He is fragile. Allegedly.</p><span class="card-link">Cause problems ↗</span></a>
+    <a class="level-card" href="#game4" data-go="game4"><span class="number">04 · pop quiz</span><span class="emoji">🧠</span><h3>Relationship trivia</h3><p>Questions written by a biased source. The source is your boyfriend.</p><span class="card-link">Test the allegations ↗</span></a>
+    <a class="level-card" href="#game5" data-go="game5"><span class="number">05 · customer feedback</span><span class="emoji">📊</span><h3>Rate this guy</h3><p>Submit your review. One-star reviews will be emotionally appealed.</p><span class="card-link">Leave feedback ↗</span></a>
+    <a class="level-card" href="#letter" data-go="letter"><span class="number">bonus content</span><span class="emoji">📄</span><h3>Terms & conditions of dating me</h3><p>One (1) mildly embarrassing note. No refunds.</p><span class="card-link">Read the fine print ↗</span></a>
+  </div>
+</section>
+
+<section class="section-wrap" id="game1">
+  <div class="game-panel">
+    <div class="game-top"><div><div class="kicker">01 · employee self-assessment</div><h3>Boyfriend performance review</h3></div><div class="game-icon" aria-hidden="true">♡</div></div>
+    <p class="sub">Is your boyfriend the best boyfriend ever? Please note the reviewer is also the person being reviewed. Very normal process.</p>
+    <div class="question" id="q1">Please rate the boyfriend. Be so for real.</div>
+    <div class="answer-row"><button class="primary" id="yesBtn" type="button">Hire this man 👍</button><button class="secondary" id="noBtn" type="button">Needs improvement</button></div>
+    <p class="status" id="s1" aria-live="polite">The committee (me) is waiting.</p>
+  </div>
+</section>
+
+<section class="section-wrap" id="game2">
+  <div class="game-panel">
+    <div class="game-top"><div><div class="kicker">02 · unpaid internship</div><h3>Catch the nonsense</h3></div><div class="game-icon" aria-hidden="true">✦</div></div>
+    <p class="sub">Catch 12 hearts. Avoid the clouds. The basket has no health insurance. Tap or drag to move it.</p>
+    <div class="game-stat"><span><strong id="heartScore">0 / 12</strong> hearts</span><span><strong id="heartLives">♥ ♥ ♥</strong> chances</span></div>
+    <div class="heart-stage" id="heartStage"><canvas id="heartCanvas" aria-label="Heart-catching game. Tap either side to move the basket."></canvas></div>
+    <div class="action-row"><button class="primary" id="heartStart" type="button">Start catching</button><button class="secondary" id="heartLeft" type="button" aria-label="Move basket left">← Move left</button><button class="secondary" id="heartRight" type="button" aria-label="Move basket right">Move right →</button></div>
+    <p class="status" id="s2" aria-live="polite">The basket is ready. The basket has no idea why.</p>
+  </div>
+</section>
+
+<section class="section-wrap" id="game3">
+  <div class="game-panel">
+    <div class="game-top"><div><div class="kicker">03 · bonk simulator</div><h3>Bonk the drama</h3></div><div class="game-icon" aria-hidden="true">☄</div></div>
+    <p class="sub">Tap the 😒 faces. Protect the 🥰 boyfriend. You have 15 seconds. This is not a metaphor. Mostly.</p>
+    <div class="game-stat"><span><strong id="whackScore">0</strong> points</span><span><strong id="whackTime">15</strong> seconds</span></div>
+    <div class="holes" id="holes" aria-label="Jealousy game board"></div>
+    <div class="action-row"><button class="primary" id="whackStart" type="button">Start the chaos</button></div>
+    <p class="status" id="s3" aria-live="polite">Please bonk responsibly.</p>
+  </div>
+</section>
+
+<section class="section-wrap" id="game4">
+  <div class="game-panel">
+    <div class="game-top"><div><div class="kicker">04 · totally peer-reviewed</div><h3>Relationship trivia</h3></div><div class="game-icon" aria-hidden="true">♛</div></div>
+    <p class="sub">A quiz written by a biased boyfriend. If the results seem suspicious, take it up with management.</p>
+    <div class="game-stat"><span>Question <strong id="quizNum">1 / 4</strong></span><span>Mommy's points: <strong id="quizScore">0</strong></span></div>
+    <div class="question" id="quizQuestion">Who has the prettiest eyes?</div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <p class="status" id="s4" aria-live="polite">Pick an answer. The scoring department is one guy with a laptop.</p>
+    <div class="action-row"><button class="secondary hidden" id="quizNext" type="button">Next question →</button><button class="secondary hidden" id="quizAgain" type="button">Play again</button></div>
+  </div>
+</section>
+
+<section class="section-wrap" id="game5">
+  <div class="game-panel">
+    <div class="game-top"><div><div class="kicker">05 · customer satisfaction survey</div><h3>Rate this guy</h3></div><div class="game-icon" aria-hidden="true">∞</div></div>
+    <p class="sub">Rate from 0 to 10. The management reserves the right to be dramatic about the results.</p>
+    <div class="range-wrap"><div class="rating-number" id="ratingNumber">10/10?</div><input type="range" id="rating" min="0" max="10" value="10" aria-label="Rate your boyfriend from zero to ten"><p class="rating-caption" id="ratingCaption" aria-live="polite">Management is nervous.</p></div>
+    <div class="action-row"><button class="primary" id="hugBtn" type="button">Deploy hug 🤗</button><button class="secondary" id="truthBtn" type="button">Unverified boyfriend fact</button></div>
+    <div class="hug-zone" id="hugZone" aria-label="Hugs received" aria-live="polite">♡</div>
+    <div class="game-stat"><span>Hugs delivered: <strong id="hugCount">0</strong></span></div>
+    <p class="status" id="s5" aria-live="polite">Hug delivery service: one employee, no vehicle.</p>
+  </div>
+</section>
+
+<section class="section-wrap" id="letter">
+  <div class="note-card">
+    <div class="eyebrow">bonus page · no dramatic music</div>
+    <h2>Fine. One<br><em>sincere bit.</em></h2>
+    <p class="letter" id="loveLetter">Okay, jokes aside for like twelve seconds: I hope your birthday is actually great. I wish I could be there to annoy you in person, steal a hug, and make you laugh at something stupid.
+
+I made this because I wanted to give you something that felt like us — a little dumb, a little chaotic, and made with actual effort. I hope it made you smile.
+
+Happy birthday, Mommy. You matter to me a lot. Please do not let this website inflate my ego.</p>
+    <div class="signature" id="signature">— the guy who made a whole website instead of being normal</div>
+    <div class="action-row" style="justify-content:center;margin-top:26px"><button class="primary" id="finalParty" type="button">Launch the confetti budget</button><button class="secondary" id="copyLetter" type="button">Copy this note</button></div>
+    <p class="status" id="sLetter" aria-live="polite"></p>
+  </div>
+</section>
+</main>
+<footer class="footer">Made with questionable coding decisions and one (1) birthday girl in mind.</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+let calm = reduced.matches;
+const completed = new Set();
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2400)}
+function celebrate(count=100){
+ if(calm)return;
+ const canvas=$('confetti'),ctx=canvas.getContext('2d');if(!ctx)return;
+ const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+ const colors=['#bc755f','#d9cbb8','#f5f1e8','#a79b84','#8f8171'];const bits=Array.from({length:count},()=>({x:innerWidth*.5+(Math.random()-.5)*180,y:innerHeight*.45+(Math.random()-.5)*70,vx:(Math.random()-.5)*9,vy:-Math.random()*8-2,size:3+Math.random()*5,rot:Math.random()*6,color:colors[Math.floor(Math.random()*colors.length)],life:70+Math.random()*35}));
+ let frame=0;function draw(){ctx.clearRect(0,0,innerWidth,innerHeight);let alive=false;for(const b of bits){if(b.life<=0)continue;alive=true;b.x+=b.vx;b.y+=b.vy;b.vy+=.16;b.rot+=.08;b.life--;ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.rot);ctx.fillStyle=b.color;ctx.globalAlpha=Math.min(1,b.life/18);ctx.fillRect(-b.size/2,-b.size/3,b.size,b.size*.65);ctx.restore()}if(alive&&frame++<150)requestAnimationFrame(draw);else ctx.clearRect(0,0,canvas.width,canvas.height)}requestAnimationFrame(draw);
+}
+function markDone(n){if(completed.has(n))return;completed.add(n);const cards=[...document.querySelectorAll('.level-card')];if(cards[n-1])cards[n-1].classList.add('done');const pct=completed.size/5*100;$('progress').style.width=pct+'%';document.querySelector('[role=progressbar]').setAttribute('aria-valuenow',completed.size);$('progressCount').textContent=completed.size+' / 5';$('progressText').textContent=completed.size===5?'All five adventures complete — love wins.':'A little more of your story unlocked';if(completed.size===5)toast('All five adventures complete. You are very loved. ♡')}
+$('begin').addEventListener('click',()=>{$('adventures').scrollIntoView({behavior:calm?'auto':'smooth'});celebrate(45)});
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();$(b.dataset.go).scrollIntoView({behavior:calm?'auto':'smooth'});}));
+$('motionToggle').addEventListener('click',()=>{calm=!calm;$('motionToggle').textContent=calm?'Motion: reduced':'Motion: normal';$('motionToggle').setAttribute('aria-pressed',String(calm));toast(calm?'Motion effects reduced':'Motion effects restored')});
+// Decorative, low-count sparkle layer
+if(!calm){const holder=$('sparkles');for(let i=0;i<18;i++){const s=document.createElement('span');s.className='spark';s.textContent=i%3===0?'✦':'·';s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';s.style.setProperty('--dur',(4+Math.random()*5)+'s');s.style.setProperty('--delay',(-Math.random()*7)+'s');s.style.fontSize=(8+Math.random()*15)+'px';holder.appendChild(s)}}
+// Chapter 1
+let noCount=0;const noReplies=['A bold answer. The committee requests a recount. 😌','Interesting… the button seems to disagree.','That answer has been gently rejected by the boyfriend council.','One more chance to choose correctly, birthday queen.'];
+$('noBtn').addEventListener('click',()=>{noCount++;$('s1').textContent=noReplies[(noCount-1)%noReplies.length];const b=$('noBtn');b.style.transform='translate('+(Math.random()*36-18)+'px,'+(Math.random()*12-6)+'px)';if(noCount>=3){b.textContent='Okay, okay 😭';$('q1').textContent='The button has accepted its fate.'}});
+$('yesBtn').addEventListener('click',()=>{$('q1').textContent='Correct. The committee thanks you for your cooperation.';$('s1').textContent='Review submitted. Boyfriend ego increased by 14%.';$('yesBtn').textContent='Correct answer ✓';$('noBtn').classList.add('hidden');markDone(1);celebrate(90)});
+// Chapter 2 heart-catching game
+const stage=$('heartStage'),hc=$('heartCanvas'),ctx=hc.getContext('2d');let gw=0,gh=0,game={on:false,items:[],x:0,score:0,lives:3,last:0,spawn:0,raf:0};
+function resizeGame(){const r=stage.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);gw=r.width;gh=r.height;hc.width=Math.round(gw*dpr);hc.height=Math.round(gh*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);game.x=Math.min(gw-24,Math.max(24,game.x||gw/2));drawGame()}
+function drawGame(){if(!ctx||!gw)return;ctx.clearRect(0,0,gw,gh);ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='30px system-ui';ctx.fillText('🧺',game.x,gh-28);for(const o of game.items){ctx.font='25px system-ui';ctx.fillText(o.bad?'☁️':'💗',o.x,o.y)}}
+function hudGame(){$('heartScore').textContent=game.score+' / 12';$('heartLives').textContent=game.lives>0?'♥ '.repeat(game.lives).trim():'♡'}
+function endHeart(win){game.on=false;cancelAnimationFrame(game.raf);$('heartStart').textContent=win?'Play again':'Try again';$('s2').textContent=win?'You caught all 12. The basket is requesting a raise.':'A few clouds got in the way. Love is still unlimited — try again.';if(win){markDone(2);celebrate(130)}}
+function loopGame(t){if(!game.on)return;const dt=Math.min(34,t-(game.last||t));game.last=t;game.spawn+=dt;if(game.spawn>610){game.spawn=0;game.items.push({x:20+Math.random()*Math.max(1,gw-40),y:-20,v:1.8+Math.random()*1.5+game.score*.05,bad:Math.random()<.22})}for(const o of game.items)o.y+=o.v*dt/16;game.items=game.items.filter(o=>{if(o.y>gh-55&&o.y<gh-5&&Math.abs(o.x-game.x)<42){if(o.bad)game.lives--;else game.score++;hudGame();return false}return o.y<gh+25});drawGame();if(game.score>=12)return endHeart(true);if(game.lives<=0)return endHeart(false);game.raf=requestAnimationFrame(loopGame)}
+function moveBasket(x){game.x=Math.max(24,Math.min(gw-24,x));if(!game.on)drawGame()}
+stage.addEventListener('pointerdown',e=>{const r=stage.getBoundingClientRect();moveBasket(e.clientX-r.left);if(!game.on&&e.pointerType==='touch'){}});
+stage.addEventListener('pointermove',e=>{if(e.buttons||e.pointerType==='touch'){const r=stage.getBoundingClientRect();moveBasket(e.clientX-r.left)}});
+$('heartLeft').addEventListener('click',()=>moveBasket(game.x-gw*.18));$('heartRight').addEventListener('click',()=>moveBasket(game.x+gw*.18));
+$('heartStart').addEventListener('click',()=>{cancelAnimationFrame(game.raf);game={on:true,items:[],x:gw/2,score:0,lives:3,last:0,spawn:0,raf:0};$('heartStart').textContent='Restart round';$('s2').textContent='Catch the hearts, sweetheart!';hudGame();game.raf=requestAnimationFrame(loopGame)});
+new ResizeObserver(resizeGame).observe(stage);resizeGame();hudGame();
+// Chapter 3 whack game
+const holes=$('holes');let wh={on:false,score:0,time:15,current:-1,timer:null,interval:null};
+const holeButtons=[];for(let i=0;i<9;i++){const b=document.createElement('button');b.className='hole';b.type='button';b.textContent='·';b.setAttribute('aria-label','Empty game spot');b.addEventListener('click',()=>{if(!wh.on||wh.current!==i)return;const good=b.dataset.good==='1';wh.score=Math.max(0,wh.score+(good?-2:1));$('whackScore').textContent=wh.score;b.textContent='✦';b.classList.remove('up');wh.current=-1;$('s3').textContent=good?'Mercy! That one was your boyfriend. 😭':'Bonk! Drama reduced by one. ✨';});holes.appendChild(b);holeButtons.push(b)}
+function popHole(){if(!wh.on)return;holeButtons.forEach(b=>{b.classList.remove('up');b.textContent='·';b.dataset.good='0';b.setAttribute('aria-label','Empty game spot')});const i=Math.floor(Math.random()*9),good=Math.random()<.22,b=holeButtons[i];wh.current=i;b.dataset.good=good?'1':'0';b.textContent=good?'🥰':'😒';b.classList.add('up');b.setAttribute('aria-label',good?'Boyfriend — do not bonk':'Jealous face — tap to bonk');wh.timer=setTimeout(popHole,650)}
+$('whackStart').addEventListener('click',()=>{clearTimeout(wh.timer);clearInterval(wh.interval);wh={on:true,score:0,time:15,current:-1,timer:null,interval:null};$('whackScore').textContent='0';$('whackTime').textContent='15';$('whackStart').textContent='Restart round';$('s3').textContent='Go go go!';popHole();wh.interval=setInterval(()=>{wh.time--;$('whackTime').textContent=wh.time;if(wh.time<=0){wh.on=false;clearTimeout(wh.timer);clearInterval(wh.interval);holeButtons.forEach(b=>{b.classList.remove('up');b.textContent='·'});$('whackStart').textContent='Play again';$('s3').textContent=wh.score>=8?'Score '+wh.score+'! You bonked the drama. Local authorities are investigating.':'Score '+wh.score+'. The drama put up a fight — rematch?';if(wh.score>=8){markDone(3);celebrate(75)}}},1000)});
+// Chapter 4 quiz, answer scoring is tied to the actual selected option.
+const questions=[
+ {q:'Who has the prettiest eyes?',answers:['Mommy, obviously','Her boyfriend'],correct:0,why:'Those eyes could make the moon jealous. 🌙'},
+ {q:'Who misses the other more?',answers:['Mommy','Her boyfriend'],correct:1,why:'He misses you in all the little quiet moments, too. 🥹'},
+ {q:'Who deserves to be spoiled today?',answers:['Mommy','Also Mommy'],correct:0,why:'A trick question. Both answers are Mommy. 👑'},
+ {q:'Where is his favorite place?',answers:['Anywhere with Mommy','On the moon'],correct:0,why:'Home is a person, and for him, it is you. ♡'}
+];let qi=0,qscore=0,answered=false;
+function renderQuiz(){answered=false;$('quizNum').textContent=Math.min(qi+1,questions.length)+' / '+questions.length;$('quizScore').textContent=qscore;$('quizQuestion').textContent=qi<questions.length?questions[qi].q:'The results are in…';$('quizOptions').innerHTML='';$('quizNext').classList.add('hidden');if(qi>=questions.length){$('quizQuestion').textContent='Final result: birthday queen, undefeated. 👑';$('s4').textContent='You scored '+qscore+' out of '+questions.length+'. The most important fact: I made you take a quiz on your birthday. Incredible use of technology.';$('quizAgain').classList.remove('hidden');markDone(4);celebrate(100);return}$('quizAgain').classList.add('hidden');questions[qi].answers.forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.className='quiz-option';b.textContent=a;b.addEventListener('click',()=>{if(answered)return;answered=true;if(i===questions[qi].correct)qscore++;$('quizScore').textContent=qscore;[...$('quizOptions').children].forEach(x=>x.disabled=true);$('s4').textContent=questions[qi].why;$('quizNext').classList.remove('hidden');if(i===questions[qi].correct)celebrate(25)});$('quizOptions').appendChild(b)});$('s4').textContent='Pick an answer. The scoring department is one guy with a laptop.'}
+$('quizNext').addEventListener('click',()=>{if(!answered)return;qi++;renderQuiz()});$('quizAgain').addEventListener('click',()=>{qi=0;qscore=0;renderQuiz()});renderQuiz();
+// Chapter 5 rating, hugs, and truths
+const ratings=['I admire your confidence. 😭','The panel would like to speak to you.','We are requesting a recount.','A little harsh, birthday queen.','I will accept this with dignity.','Room for improvement. I respect it.','Okay, we are getting somewhere.','The boyfriend is blushing.','That is a very fair score.','So close to perfection…','The scale has officially broken. ∞/10'];function updateRating(){const v=+$('rating').value;$('ratingNumber').textContent=v===10?'∞/10':v+'/10';$('ratingCaption').textContent=ratings[v]}$('rating').addEventListener('input',updateRating);updateRating();
+let hugs=0,truth=0;const truths=['I miss you even when we have only just said goodbye.','You make ordinary days feel like something worth remembering.','I hope you see yourself through my eyes at least once.','No distance gets to change how much you mean to me.','You are allowed to be soft, tired, silly, and completely yourself with me.','If I could make one birthday wish for you, it would be that you feel deeply loved.'];$('hugBtn').addEventListener('click',()=>{hugs++;$('hugCount').textContent=hugs;$('hugZone').textContent='';for(let i=0;i<Math.min(7,3+hugs%5);i++){const s=document.createElement('span');s.textContent=['💗','♡','🤗','✦','💕'][Math.floor(Math.random()*5)];$('hugZone').appendChild(s)}$('s5').textContent=hugs===1?'Hug dispatched. ETA: emotionally immediate.':hugs<5?'Hug number '+hugs+' delivered. No limits on these.':'Hug number '+hugs+'. I am never putting a limit on loving you.';if(hugs===1)markDone(5);if(!calm)celebrate(22)});
+$('truthBtn').addEventListener('click',()=>{truth=(truth+1)%truths.length;$('s5').textContent=truths[truth];$('truthBtn').textContent='One more truth ♡'});
+$('finalParty').addEventListener('click',()=>{celebrate(180);$('sLetter').textContent='If the world gets loud, come back to this little corner. It was made just for you. ♡';toast('Confetti deployed. Please clean up after the website.')});
+$('copyLetter').addEventListener('click',async()=>{const text=$('loveLetter').textContent.trim()+'\n\n'+$('signature').textContent;try{await navigator.clipboard.writeText(text);$('sLetter').textContent='Copied. This website has finally produced something practical.'}catch(e){$('sLetter').textContent='Select and copy the letter above to keep it close. ♡'}});
+// Clean up active game loops when the page is hidden.
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&game.on){game.on=false;cancelAnimationFrame(game.raf);$('heartStart').textContent='Resume with a fresh round'}})
+})();
+</script>
+</body>
+</html>
